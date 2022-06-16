@@ -4,3 +4,8 @@
   text-align: center;
   padding: 20px;
 }
+
+.header{
+  font-family: 'Azeret Mono', monospace;
+  font-size: 30px;
+}

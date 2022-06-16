@@ -4,7 +4,7 @@ export default function Translate() {
   return (
     <div>
       <div className="app-header">
-      <h2>Text Translator</h2>
+      <h2 className="header">Text Translator</h2>
       </div>
     </div>
   )

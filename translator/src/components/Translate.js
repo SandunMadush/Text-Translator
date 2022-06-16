@@ -1,5 +1,11 @@
-import React from "react";
+import React from 'react'
 
 export default function Translate() {
-  return <div>Text Translate</div>;
+  return (
+    <div>
+      <div className="app-header">
+      <h2>Text Translator</h2>
+      </div>
+    </div>
+  )
 }

@@ -9,3 +9,8 @@
   font-family: 'Azeret Mono', monospace;
   font-size: 30px;
 }
+
+.app-body{
+  padding: 20px;
+  text-align: center;
+}

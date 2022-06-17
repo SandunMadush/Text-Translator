@@ -31,6 +31,7 @@ export default function Translate() {
           <form>
             <select
               class="form-select form-select-sm"
+              className="language-select"
               aria-label=".form-select-sm example"
             >
               <option selected>Select the Language</option>

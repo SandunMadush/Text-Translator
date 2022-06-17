@@ -14,3 +14,11 @@
   padding: 20px;
   text-align: center;
 }
+
+.language-select{
+  padding: 10px;
+  width: 405px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+

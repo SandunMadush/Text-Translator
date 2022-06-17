@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import TranslateIcon from "@mui/icons-material/Translate";
 
@@ -38,10 +33,12 @@ export default function Translate() {
               class="form-select form-select-sm"
               aria-label=".form-select-sm example"
             >
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option selected>Select the Language</option>
+              <option value="1">English</option>
+              <option value="2">Spanish</option>
+              <option value="3">French</option>
+              <option value="4">Arabic</option>
+              <option value="5">Hindi</option>
             </select>
           </form>
           <form>

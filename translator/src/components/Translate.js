@@ -19,7 +19,7 @@ export default function Translate() {
       });
   };
   useEffect(() => {
-    axios.get('shttps://libretranslate.com/languages').then((response) => {
+    axios.get('https://libretranslate.com/languages').then((response) => {
       setLanguagesList(response.data);
     });
     getLanguageSource()

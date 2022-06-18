@@ -5,44 +5,43 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import axios from "axios";
 
 export default function Translate() {
-  const [inputText, setInputText] = useState('');
-    const [detectLanguageKey, setdetectedLanguageKey] = useState('');
-    const [selectedLanguageKey, setLanguageKey] = useState('')
-    const [languagesList, setLanguagesList] = useState([])
-    const [resultText, setResultText] = useState('');
-    const getLanguageSource = () => {
-        axios.post(`https://libretranslate.de/detect`, {
-            q: inputText
-        })
-            .then((response) => {
-                setdetectedLanguageKey(response.data[0].language)
-            })
-    }
-    useEffect(() => {
-        axios.get(`https://libretranslate.de/languages`)
-            .then((response) => {
-                setLanguagesList(response.data)
-            })
-            getLanguageSource()
-    }, [inputText])
+  const [inputText, setInputText] = useState("");
+  const [detectLanguageKey, setdetectedLanguageKey] = useState("");
+  const [selectedLanguageKey, setLanguageKey] = useState("");
+  const [languagesList, setLanguagesList] = useState([]);
+  const [resultText, setResultText] = useState("");
+  const getLanguageSource = () => {
+    axios
+      .post(`https://libretranslate.de/detect`, {
+        q: inputText,
+      })
+      .then((response) => {
+        setdetectedLanguageKey(response.data[0].language);
+      });
+  };
+  useEffect(() => {
+    axios.get(`https://libretranslate.de/languages`).then((response) => {
+      setLanguagesList(response.data);
+    });
+    getLanguageSource();
+  }, [inputText]);
 
-    const languageKey = (selectedLanguage) => {
-        setLanguageKey(selectedLanguage.target.value)
-    }
+  const languageKey = (selectedLanguage) => {
+    setLanguageKey(selectedLanguage.target.value);
+  };
 
-    const translateText = () => {
-        getLanguageSource();
+  const translateText = () => {
+    getLanguageSource();
 
-        let data = {
-            q : inputText,
-            source: detectLanguageKey,
-            target: selectedLanguageKey
-        }
-        axios.post(`https://libretranslate.de/translate`, data)
-        .then((response) => {
-            setResultText(response.data.translatedText)
-        })
-}
+    let data = {
+      q: inputText,
+      source: detectLanguageKey,
+      target: selectedLanguageKey,
+    };
+    axios.post(`https://libretranslate.de/translate`, data).then((response) => {
+      setResultText(response.data.translatedText);
+    });
+  };
   return (
     <div>
       <div className="app-header">
@@ -79,19 +78,19 @@ export default function Translate() {
               minRows={3}
               placeholder="Your result of translation..."
               style={{ width: 400 }}
-              value={ resultText }
+              value={resultText}
             />
           </form>
           <form>
-            <Button
-              variant="contained"
-              startIcon={<TranslateIcon />}
-              size="medium"
-              color="success"
-              onClick={translateText}
-            >
-              Translate
-            </Button>
+              <Button
+                variant="contained"
+                startIcon={<TranslateIcon />}
+                size="medium"
+                color="success"
+                onClick={translateText}
+              >
+                Translate
+              </Button>
           </form>
         </div>
       </div>

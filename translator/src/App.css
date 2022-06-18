@@ -8,6 +8,7 @@
 .header{
   font-family: 'Azeret Mono', monospace;
   font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .app-body{

@@ -6,39 +6,42 @@ import axios from "axios";
 
 export default function Translate() {
   const [inputText, setInputText] = useState('');
-  const [resultTest, setResultText] = useState('');
-  const [detectLanguageKey, setdetectedLanguageKey] = useState('');
-  const [languagesList, setLanguagesList] = useState([]);
-  const [selectedLanguageKey, setLanguageKey] = useState('');
-  const getLanguageSource = () => {
-    axios.post('https://libretranslate.com/detect', {
-        q: inputText
-      })
-      .then((response) => {
-        setdetectedLanguageKey(response.data[0].language);
-      });
-  };
-  useEffect(() => {
-    axios.get('https://libretranslate.com/languages').then((response) => {
-      setLanguagesList(response.data);
-    });
-    getLanguageSource()
-  }, [inputText]);
-  const languageKey = (selectedLanguage) => {
-    setLanguageKey(selectedLanguage.target.value)
-  }
-  const translateText = () => {
-    getLanguageSource();
-
-    let data = {
-        q : inputText,
-        source: detectLanguageKey,
-        target: selectedLanguageKey
+    const [detectLanguageKey, setdetectedLanguageKey] = useState('');
+    const [selectedLanguageKey, setLanguageKey] = useState('')
+    const [languagesList, setLanguagesList] = useState([])
+    const [resultText, setResultText] = useState('');
+    const getLanguageSource = () => {
+        axios.post(`https://libretranslate.de/detect`, {
+            q: inputText
+        })
+            .then((response) => {
+                setdetectedLanguageKey(response.data[0].language)
+            })
     }
-    axios.post("https://libretranslate.com/translate", data)
-    .then((response) => {
-        setResultText(response.data.translatedText)
-    })
+    useEffect(() => {
+        axios.get(`https://libretranslate.de/languages`)
+            .then((response) => {
+                setLanguagesList(response.data)
+            })
+            getLanguageSource()
+    }, [inputText])
+
+    const languageKey = (selectedLanguage) => {
+        setLanguageKey(selectedLanguage.target.value)
+    }
+
+    const translateText = () => {
+        getLanguageSource();
+
+        let data = {
+            q : inputText,
+            source: detectLanguageKey,
+            target: selectedLanguageKey
+        }
+        axios.post(`https://libretranslate.de/translate`, data)
+        .then((response) => {
+            setResultText(response.data.translatedText)
+        })
 }
   return (
     <div>
@@ -76,7 +79,7 @@ export default function Translate() {
               minRows={3}
               placeholder="Your result of translation..."
               style={{ width: 400 }}
-              value={resultTest}
+              value={ resultText }
             />
           </form>
           <form>

@@ -24,6 +24,7 @@ export default function Translate() {
       setLanguagesList(response.data);
     });
     getLanguageSource();
+    document.title = "Translator";
   }, [inputText]);
 
   const languageKey = (selectedLanguage) => {
@@ -55,7 +56,7 @@ export default function Translate() {
               aria-label="empty textarea"
               minRows={3}
               placeholder="Enter the text here to translate..."
-              style={{ width: 400 }}
+              style={{ width: 400, fontSize: 15 }}
               onChange={(e) => setInputText(e.target.value)}
             />
           </form>
@@ -64,6 +65,7 @@ export default function Translate() {
               class="form-select form-select-sm"
               className="language-select"
               aria-label=".form-select-sm example"
+              style={{ fontSize: 15 }}
               onChange={languageKey}
             >
               <option>Please Select Language..</option>
@@ -77,20 +79,20 @@ export default function Translate() {
               aria-label="empty textarea"
               minRows={3}
               placeholder="Your result of translation..."
-              style={{ width: 400 }}
+              style={{ width: 400, fontSize: 15 }}
               value={resultText}
             />
           </form>
           <form>
-              <Button
-                variant="contained"
-                startIcon={<TranslateIcon />}
-                size="medium"
-                color="success"
-                onClick={translateText}
-              >
-                Translate
-              </Button>
+            <Button
+              variant="contained"
+              startIcon={<TranslateIcon />}
+              size="medium"
+              color="success"
+              onClick={translateText}
+            >
+              Translate
+            </Button>
           </form>
         </div>
       </div>
